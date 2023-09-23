@@ -24,7 +24,7 @@ public class AccountController {
         messageDTO.setContent("hello word");
         messageDTO.setTo("nghia");
         messageDTO.setToName("Hau");
-        messageDTO.setSubject("love");
+        messageDTO.setSubject("topic sending");
         kafkaTemplate.send("notification", messageDTO);
         kafkaTemplate.send("statictis", statictisDTO);
         return accountDTO;

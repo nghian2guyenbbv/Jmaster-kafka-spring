@@ -14,12 +14,12 @@ public class AccountServiceApplication {
 
     @Bean
     public NewTopic notification() {
-        return new NewTopic("notification", 2, (short) 1);
+        return new NewTopic("notification2", 2, (short) 2);
     }
 
     @Bean
     public NewTopic statictis() {
-        return new NewTopic("statictis", 2, (short) 1);
+        return new NewTopic("statictis", 2, (short) 2);
     }
 
 }

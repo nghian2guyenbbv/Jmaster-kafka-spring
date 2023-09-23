@@ -11,7 +11,7 @@ public class MessageService {
     @Autowired
     private EmailService emailService;
 
-    @KafkaListener(groupId = "notificationGroup", topics = "notification")
+    @KafkaListener(groupId = "notificationGroup1", topics = "notification2")
     public void notificationService(MessageDTO messageDTO) {
         emailService.sendEmail(messageDTO);
         System.out.println("messageDto: "+messageDTO.getContent());

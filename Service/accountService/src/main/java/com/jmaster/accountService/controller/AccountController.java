@@ -25,8 +25,9 @@ public class AccountController {
         messageDTO.setTo("nghia");
         messageDTO.setToName("Hau");
         messageDTO.setSubject("topic sending");
-        kafkaTemplate.send("notification", messageDTO);
-        kafkaTemplate.send("statictis", statictisDTO);
+        kafkaTemplate.send("notification2", messageDTO);
+        kafkaTemplate.send("statictis", messageDTO);
+        System.out.println("sucess create acct");
         return accountDTO;
     }
 }

@@ -1,0 +1,2 @@
++ Error happen when producer send a lot of message in 1 time. And kafka maybe lost some message
++ handle with kafka retries properties and callback Function when message was send fail

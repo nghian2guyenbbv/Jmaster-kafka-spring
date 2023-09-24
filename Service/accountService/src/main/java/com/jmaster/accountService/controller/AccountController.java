@@ -4,7 +4,10 @@ import com.jmaster.accountService.model.AccountDTO;
 import com.jmaster.accountService.model.MessageDTO;
 import com.jmaster.accountService.model.StatictisDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaProducerException;
+import org.springframework.kafka.core.KafkaSendCallback;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +28,25 @@ public class AccountController {
         messageDTO.setTo("nghia");
         messageDTO.setToName("Hau");
         messageDTO.setSubject("topic sending");
-        kafkaTemplate.send("notification2", messageDTO);
-        kafkaTemplate.send("statictis", messageDTO);
+        for(int index = 0 ; index < 100 ; index++) {
+            kafkaTemplate.send("notification2", messageDTO).addCallback(new KafkaSendCallback<String, Object>() {
+                @Override
+                public void onSuccess(SendResult<String, Object> result) {
+                    System.out.println("Sucessfully send message on partition:" + result.getProducerRecord().partition());
+                }
+
+                @Override
+                public void onFailure(Throwable ex) {
+                    ex.printStackTrace();
+                }
+
+                @Override
+                public void onFailure(KafkaProducerException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        //kafkaTemplate.send("statictis", messageDTO);
         System.out.println("sucess create acct");
         return accountDTO;
     }

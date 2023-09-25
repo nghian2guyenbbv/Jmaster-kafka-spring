@@ -28,8 +28,8 @@ public class AccountController {
         messageDTO.setTo("nghia");
         messageDTO.setToName("Hau");
         messageDTO.setSubject("topic sending");
-        for(int index = 0 ; index < 100 ; index++) {
-            kafkaTemplate.send("notification2", messageDTO).addCallback(new KafkaSendCallback<String, Object>() {
+       // for(int index = 0 ; index < 100 ; index++) {
+            kafkaTemplate.send("notification3", messageDTO).addCallback(new KafkaSendCallback<String, Object>() {
                 @Override
                 public void onSuccess(SendResult<String, Object> result) {
                     System.out.println("Sucessfully send message on partition:" + result.getProducerRecord().partition());
@@ -45,7 +45,7 @@ public class AccountController {
                     e.printStackTrace();
                 }
             });
-        }
+        //}
         //kafkaTemplate.send("statictis", messageDTO);
         System.out.println("sucess create acct");
         return accountDTO;

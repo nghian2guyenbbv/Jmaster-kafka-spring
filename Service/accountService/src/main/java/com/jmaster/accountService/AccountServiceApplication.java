@@ -14,7 +14,7 @@ public class AccountServiceApplication {
 
     @Bean
     public NewTopic notification() {
-        return new NewTopic("notification2", 2, (short) 2);
+        return new NewTopic("notification3", 2, (short) 2);
     }
 
     @Bean

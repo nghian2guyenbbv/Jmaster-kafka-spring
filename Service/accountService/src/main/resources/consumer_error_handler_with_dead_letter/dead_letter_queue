@@ -1,0 +1,7 @@
++ definition:
+When a message was fail to to process in consumer, it will be store in Dead letter queue (if config)
++ retry with consumer:
+https://www.baeldung.com/spring-retry-kafka-consumer
+
++ notion:
+https://www.notion.so/Dead-letter-queue-1361fe9eaa8a4c7d9341de254703afdb?pvs=4

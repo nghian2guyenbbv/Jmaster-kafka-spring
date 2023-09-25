@@ -11,11 +11,18 @@ public class MessageService {
     @Autowired
     private EmailService emailService;
 
-    @KafkaListener(groupId = "notificationGroup1", topics = "notification2")
+    @KafkaListener(groupId = "notificationGroup2", topics = "notification3")
     public void notificationService(MessageDTO messageDTO) {
-        emailService.sendEmail(messageDTO);
+        /*emailService.sendEmail(messageDTO);
         System.out.println("messageDto: "+messageDTO.getContent());
-        System.out.println("send email successfull");
+        System.out.println("send email successfull");*/
+        throw new RuntimeException();
+    }
+
+    @KafkaListener(groupId = "dltGroup", topics = "notification3.DLT")
+    public void dltListener(MessageDTO messageDTO){
+        System.out.println("Received notification dead letter from: "+messageDTO.getTo());
+
     }
 
 }

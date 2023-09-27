@@ -1,0 +1,4 @@
+pooling service is a service to send a bulk messages into a topic as a batch job
+-> message was not send immediately to kafka.
+We need to save message into db and send it to kafka as a batch
+Notion: https://www.notion.so/POOLING-SERVICE-1ecb579c1f78407ebf177e8df1b7658e

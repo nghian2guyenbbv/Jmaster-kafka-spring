@@ -3,6 +3,7 @@ package com.jmaster.accountService.controller;
 import com.jmaster.accountService.model.AccountDTO;
 import com.jmaster.accountService.model.MessageDTO;
 import com.jmaster.accountService.model.StatictisDTO;
+import com.jmaster.accountService.repo.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaProducerException;
 import org.springframework.kafka.core.KafkaSendCallback;
@@ -20,15 +21,20 @@ import java.util.Date;
 public class AccountController {
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
+    @Autowired
+    private MessageRepo messageRepo;
+
     @PostMapping("/create")
-    public AccountDTO createAcct(@RequestBody AccountDTO accountDTO){
-        StatictisDTO statictisDTO = new StatictisDTO("Account"+accountDTO.getEmail()+"was created", new Date());
-        MessageDTO messageDTO  = new MessageDTO();
+    public AccountDTO createAcct(@RequestBody AccountDTO accountDTO) {
+        StatictisDTO statictisDTO = new StatictisDTO("Account" + accountDTO.getEmail() + "was created", new Date());
+        MessageDTO messageDTO = new MessageDTO();
         messageDTO.setContent("hello word");
         messageDTO.setTo("nghia");
-        messageDTO.setToName("Hau");
+        messageDTO.setToName("Dung");
         messageDTO.setSubject("topic sending");
-       // for(int index = 0 ; index < 100 ; index++) {
+        messageDTO.setStatus(false);
+        messageRepo.save(messageDTO);
+       /*// for(int index = 0 ; index < 100 ; index++) {
             kafkaTemplate.send("notification3", messageDTO).addCallback(new KafkaSendCallback<String, Object>() {
                 @Override
                 public void onSuccess(SendResult<String, Object> result) {
@@ -46,7 +52,7 @@ public class AccountController {
                 }
             });
         //}
-        //kafkaTemplate.send("statictis", messageDTO);
+        //kafkaTemplate.send("statictis", messageDTO);*/
         System.out.println("sucess create acct");
         return accountDTO;
     }

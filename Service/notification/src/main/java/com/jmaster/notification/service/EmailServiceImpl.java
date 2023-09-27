@@ -25,7 +25,7 @@ public class EmailServiceImpl implements EmailService {
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, StandardCharsets.UTF_8.name());
         try {
             helper.setTo("nghia.nvt96@gmail.com");
-            helper.setText("message was sent from: "+messageDTO.getTo(), false);
+            helper.setText("message was sent from: "+messageDTO.getTo_email(), false);
             helper.setSubject("this is subject");
             helper.setFrom(from);
             javaMailSender.send(mimeMessage);

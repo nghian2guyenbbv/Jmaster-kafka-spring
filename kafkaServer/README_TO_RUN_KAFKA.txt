@@ -1,5 +1,5 @@
 -- create zookeeper server
-cd D:\NguyenNghia\kafka
+cd D:\kafkaServer
 .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 
 -- create a kafka server
@@ -26,6 +26,4 @@ Remove D://tmp folder
 3/ .\bin\windows\kafka-server-start.bat config\server.properties --override listeners=PLAINTEXT://:9094 --override broker.id=2 --override log.dirs=/tmp/kafka-logs-2
 + 3 broker tự động join lại thành 1 cluster ?????????
 + create a topic with 2 partitions
-.\bin\windows\kafka-topics.bat --create --topic topic-example --partitions 2 --replication-factor 1 --bootstrap-server localhost:9092
-
-
+.\bin\windows\kafka-topics.bat --create --topic notification3 --partitions 2 --replication-factor 1 --bootstrap-server localhost:9092

@@ -1,0 +1,4 @@
+notion: https://www.notion.so/non-blocking-consumer-handle-552c24acc6ed4cefb0eae4a8527cb779?pvs=4
+Definition:
+After message was consume fail and fail to retry some times, It will be send to dead letter topics and we need a
+consumer to listen this dead letter topic

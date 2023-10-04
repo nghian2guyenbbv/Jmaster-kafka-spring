@@ -21,7 +21,7 @@ public class AccountServiceApplication {
 
     @Bean
     public NewTopic statictis() {
-        return new NewTopic("statictis", 2, (short) 2);
+        return new NewTopic("statictis2", 2, (short) 2);
     }
 
 }

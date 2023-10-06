@@ -23,7 +23,7 @@ public class PoolingService {
     private void produce() {
         List<MessageDTO> falseMessages = messageRepo.findMessageDTOByStatus(false);
         for (MessageDTO messageDTO : falseMessages) {
-            kafkaTemplate.send("statictis2", messageDTO).addCallback(new KafkaSendCallback<String, Object>() {
+            kafkaTemplate.send("statictis3", messageDTO).addCallback(new KafkaSendCallback<String, Object>() {
 
                 @Override
                 public void onFailure(KafkaProducerException e) {
